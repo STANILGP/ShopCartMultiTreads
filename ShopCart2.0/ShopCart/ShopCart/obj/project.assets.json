@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\ShopCart2.0\\ShopCart\\ShopCart\\ShopCart.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\ShopCartMultiTreads\\ShopCart2.0\\ShopCart\\ShopCart\\ShopCart.csproj",
       "projectName": "ShopCart",
-      "projectPath": "C:\\Users\\user\\Desktop\\ShopCart2.0\\ShopCart\\ShopCart\\ShopCart.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\ShopCartMultiTreads\\ShopCart2.0\\ShopCart\\ShopCart\\ShopCart.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\ShopCart2.0\\ShopCart\\ShopCart\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\ShopCartMultiTreads\\ShopCart2.0\\ShopCart\\ShopCart\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
