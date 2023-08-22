@@ -45,7 +45,7 @@ namespace ShopCart.Service
     }
     internal interface ICommandHandler
     {
-        void Execution();
+        void Execute(CommandArguments args);
         string GetName();
         string GetHelp();
     }

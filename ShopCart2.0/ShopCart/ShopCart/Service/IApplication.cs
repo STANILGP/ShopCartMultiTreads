@@ -1,6 +1,7 @@
 ﻿using ShopCart.Entity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,15 @@ namespace ShopCart.Service
     internal interface IApplication
     {
         void Run();
+        void ServeIsOpen(bool a);
         void Exit();
         IDatabaseService GetDatabaseService();
-        //IShoppingCartService GetShoppingCartService();
+        ICartDatabase GetCartDatabase();
 
         List<CommandItem> GetCommands();
 
         UserRole GetRole();
         void SetRole(UserRole role);
 
-        void PrintMessage(string msg);
     }
 }

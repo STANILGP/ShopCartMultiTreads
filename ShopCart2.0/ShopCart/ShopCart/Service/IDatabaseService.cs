@@ -8,5 +8,13 @@ namespace ShopCart.Service
 {
     internal interface IDatabaseService
     {
+        void Init();
+        void Cleanup();
+
+        public void AddProduct();
+        public void DeleteProduct();
+        public void UpdateProduct();
+        public void ListProducts();
+        public void SearchProducts();
     }
 }
