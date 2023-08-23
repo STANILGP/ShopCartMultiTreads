@@ -5,17 +5,13 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using ShopCart.Commands;
-using ShopCart.Service;
 
-namespace ShopCart.ClientHandler
+
+namespace ShopCart.Client
 {
-    internal class ClientHandler
+    internal class Client
     {
-        IApplication app = new Application();
-        bool _disposed;
-        
-        public ClientHandler()
+        static void Main(string[] args)
         {
             IPAddress serverIpAddress = IPAddress.Parse("127.0.0.1");
             int serverPort = 12345;
@@ -23,9 +19,10 @@ namespace ShopCart.ClientHandler
             client.Connect(serverIpAddress, serverPort);
             NetworkStream stream = client.GetStream();
             Console.WriteLine("Please enter command or help() for list of commands.");
-            app.ServeIsOpen(_disposed);
-            while (_disposed != true)
+
+            while (true)
             {
+
                 Console.Write("> ");
                 string? commandLine = Console.ReadLine();
                 if (commandLine != null)

@@ -54,10 +54,15 @@ namespace ShopCart
 
         public void Run()
         {
+            
             ShopServer server = new ShopServer();
             while (!_closeApp.WaitOne(0))
             {
-                string CommandLine = server.ComWithClient();
+                
+                server.ComWithServer();
+                
+                Console.WriteLine(server.ComWithServer());
+                string CommandLine = server.ComWithServer();
                 if (CommandLine != null)
                 {
                     try
@@ -89,12 +94,9 @@ namespace ShopCart
             }
 
         }
-
         public void SetRole(UserRole role)
         {
             _role = role;
         }
-
- 
     }
 }

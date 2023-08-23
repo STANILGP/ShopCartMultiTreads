@@ -11,7 +11,7 @@ namespace ShopCart.Service
         void Init();
         void Cleanup();
 
-        public void AddProduct();
+        public void AddProduct(); 
         public void DeleteProduct();
         public void UpdateProduct();
         public void ListProducts();

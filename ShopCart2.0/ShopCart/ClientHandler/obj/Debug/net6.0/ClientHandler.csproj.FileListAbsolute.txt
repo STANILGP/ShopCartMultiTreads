@@ -1,0 +1,14 @@
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\bin\Debug\net6.0\ClientHandler.exe
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\bin\Debug\net6.0\ClientHandler.deps.json
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\bin\Debug\net6.0\ClientHandler.runtimeconfig.json
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\bin\Debug\net6.0\ClientHandler.dll
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\bin\Debug\net6.0\ClientHandler.pdb
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.AssemblyInfo.cs
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.dll
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\refint\ClientHandler.dll
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.pdb
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ClientHandler.genruntimeconfig.cache
+C:\Users\user\Desktop\ShopCartMultiTreads\ShopCart2.0\ShopCart\ClientHandler\obj\Debug\net6.0\ref\ClientHandler.dll
