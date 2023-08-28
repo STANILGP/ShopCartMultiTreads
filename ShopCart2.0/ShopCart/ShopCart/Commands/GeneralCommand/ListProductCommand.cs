@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopCart.Commands
+namespace ShopCart.Commands.GeneralCommand
 {
-    internal class AddCartItemCommand : ICommandHandler
+    internal class ListProductCommand : ICommandHandler
     {
-        
-
         public void Execute(CommandArguments args)
         {
             throw new NotImplementedException();

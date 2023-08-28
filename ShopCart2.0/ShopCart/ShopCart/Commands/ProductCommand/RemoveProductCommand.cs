@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopCart.Commands
+namespace ShopCart.Commands.Product
 {
-    internal class RemoveCartItemCommand : ICommandHandler
+    internal class RemoveProductCommand : ICommandHandler
     {
         public void Execute(CommandArguments args)
         {

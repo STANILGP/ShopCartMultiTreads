@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopCart.Commands
+namespace ShopCart.Commands.Product
 {
-    internal class ListProductCommand : ICommandHandler
+    internal class AddProductCommand : ICommandHandler
     {
+
         public void Execute(CommandArguments args)
         {
             throw new NotImplementedException();
@@ -16,12 +17,12 @@ namespace ShopCart.Commands
 
         public string GetHelp()
         {
-            throw new NotImplementedException();
+            return "AddProduct command help string";
         }
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "AddProduct";
         }
     }
 }

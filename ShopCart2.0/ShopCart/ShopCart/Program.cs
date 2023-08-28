@@ -22,7 +22,7 @@ namespace ShopCart
                 app.Exit();
                 server.StopServer();
             };
-            app.Run();
+           
 
         }
     }

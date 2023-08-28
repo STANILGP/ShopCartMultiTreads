@@ -14,22 +14,17 @@ using System.Windows.Input;
 namespace ShopCart
 {
     internal class Application : IApplication
-    {
+    { 
         private EventWaitHandle _closeApp = new(false, EventResetMode.ManualReset);
         private IDatabaseService _databaseService;
         private ICartDatabase _cartDatabase;
         private UserRole _role = UserRole.None;
         private List<CommandItem> _commands = new();
-        private bool _disposed = true;
+        private User _user;
 
-        public void ServeIsOpen(bool disposed)
-        { 
-            _disposed = disposed;
-        }
         public void Exit()
         {
             _closeApp.Set();
-            _disposed = false;
         }
 
         public ICartDatabase GetCartDatabase()
@@ -47,56 +42,49 @@ namespace ShopCart
            return _databaseService;
         }
 
-        public UserRole GetRole()
-        {
-            return _role;
-        }
+       
 
-        public void Run()
+        public void Run( User user)
         {
-            
-            ShopServer server = new ShopServer();
             while (!_closeApp.WaitOne(0))
             {
-                
-                server.ComWithServer();
-                
-                Console.WriteLine(server.ComWithServer());
-                string CommandLine = server.ComWithServer();
-                if (CommandLine != null)
+                var clientline = user.Command.First();
+                if (clientline != null)
                 {
-                    try
-                    {
-                        (string cmd, string argStr) = CommandParser.Parse(CommandLine);
-                        var args = CommandParser.ParseArguments(argStr);
-
-                        var cmdItem = _commands.Find(x => x.Handler.GetName() == cmd);
-
-                        if (cmdItem != null && cmdItem.Roles.Contains(_role))
+                    string CommandLine = user.Command.First();
+                   
+                        try
                         {
-                            cmdItem.Handler.Execute(args);
+                            (string cmd, string argStr) = CommandParser.Parse(CommandLine);
+                            var args = CommandParser.ParseArguments(argStr);
+
+                            var cmdItem = _commands.Find(x => x.Handler.GetName() == cmd);
+
+                            if (cmdItem != null && cmdItem.Roles.Contains(_role))
+                            {
+                                cmdItem.Handler.Execute(args);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Invalid command: {cmd}");
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            Console.WriteLine($"Invalid command: {cmd}");
+                            Console.WriteLine(ex.Message);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    
+                    
+                    _databaseService.Cleanup();
+                    user.Command.RemoveAt(0);
                 }
                 else
                 {
-                    break;
+                     break;
                 }
-                _databaseService.Cleanup();
             }
 
         }
-        public void SetRole(UserRole role)
-        {
-            _role = role;
-        }
+       
     }
 }

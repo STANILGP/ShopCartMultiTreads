@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCart.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal interface ICartDatabase
+    internal interface ICartDatabase 
     {
-        public void AddCartItem();
+        public void AddCartItem(uint ID, uint ProductId, uint Quantity);
         public void RemoveCartItem();
         public void EditCartItem();
         public void SearchProduct();

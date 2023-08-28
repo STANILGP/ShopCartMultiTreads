@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopCart.Commands
+namespace ShopCart.Commands.CartItem
 {
-    internal class EditProductCommand : ICommandHandler
+    internal class EditCartItemCommand : ICommandHandler
     {
         public void Execute(CommandArguments args)
         {

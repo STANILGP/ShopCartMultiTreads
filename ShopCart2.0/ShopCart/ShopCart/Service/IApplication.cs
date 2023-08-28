@@ -27,16 +27,12 @@ namespace ShopCart.Service
 
     internal interface IApplication
     {
-        void Run();
-        void ServeIsOpen(bool a);
+        void Run(User user);
         void Exit();
         IDatabaseService GetDatabaseService();
         ICartDatabase GetCartDatabase();
 
         List<CommandItem> GetCommands();
-
-        UserRole GetRole();
-        void SetRole(UserRole role);
 
     }
 }

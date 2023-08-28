@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCart.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class CartDatabase : ICartDatabase
+    internal class CartDatabase : CartItem , ICartDatabase
     {
-        public void AddCartItem()
+        public void AddCartItem(uint ID,uint ProductId,uint Quantity)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void EditCartItem()
