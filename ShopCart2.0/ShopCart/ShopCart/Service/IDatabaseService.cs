@@ -10,11 +10,10 @@ namespace ShopCart.Service
     {
         void Init();
         void Cleanup();
-
         public void AddProduct(string name, string des, float price, uint quantity); 
-        public void DeleteProduct();
+        public void DeleteProduct(uint id);
         public void UpdateProduct(uint id);
         public void ListProducts();
-        public void SearchProducts();
+        public void SearchProducts(string name);
     }
 }

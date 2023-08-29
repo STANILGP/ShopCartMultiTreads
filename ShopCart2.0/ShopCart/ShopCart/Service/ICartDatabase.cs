@@ -11,7 +11,7 @@ namespace ShopCart.Service
     {
         public void AddCartItem(uint productID,uint Quantity);
         public void RemoveCartItem();
-        public void EditCartItem();
+        public void EditCartItem(uint productID);
         public void SearchProduct();
         public void ListProduct();
     }

@@ -9,19 +9,22 @@ namespace ShopCart.Commands.ProductCommand
 {
     internal class ListProductCommand : ICommandHandler
     {
+        private IApplication _application;
+        public ListProductCommand(IApplication application)
+        {
+            _application = application;
+        }
         public void Execute(CommandArguments args)
         {
-            throw new NotImplementedException();
+            _application.GetDatabaseService().ListProducts();
         }
-
         public string GetHelp()
         {
-            throw new NotImplementedException();
+           return "ListProduct()";
         }
-
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "ListProduct";
         }
     }
 }

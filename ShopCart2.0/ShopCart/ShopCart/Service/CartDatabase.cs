@@ -25,9 +25,13 @@ namespace ShopCart.Service
             _shopCartItems.Add(item);
         }
 
-        public void EditCartItem()
+        public void EditCartItem(uint productId)
         {
-            throw new NotImplementedException();
+            ShopCartItem editProduct = _shopCartItems.Find(p => p.Id == productId);
+            Console.WriteLine(editProduct.ToString());
+            Console.WriteLine("New Quantity: ");
+            int newQuantity = int.Parse(Console.ReadLine());
+            editProduct.Quantity = (uint)newQuantity;
         }
 
         public void ListProduct()

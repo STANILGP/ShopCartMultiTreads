@@ -9,19 +9,25 @@ namespace ShopCart.Commands.ProductCommand
 {
     internal class SearchProductCommand : ICommandHandler
     {
+        private IApplication _application;
+        public SearchProductCommand(IApplication application)
+        {
+            _application = application;
+        }
         public void Execute(CommandArguments args)
         {
-            throw new NotImplementedException();
+            string name = args.AsString(0);
+            _application.GetDatabaseService().SearchProducts(name);
         }
 
         public string GetHelp()
         {
-            throw new NotImplementedException();
+            return "Search({Name})";
         }
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "Search";
         }
     }
 }

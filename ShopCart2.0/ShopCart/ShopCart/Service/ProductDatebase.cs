@@ -33,9 +33,18 @@ namespace ShopCart.Service
             throw new NotImplementedException();
         }
 
-        public void DeleteProduct()
+        public void DeleteProduct(uint id)
         {
-            throw new NotImplementedException();
+            Product removeproduct = _products.Find(p => p.Id == id);
+            if (removeproduct != null)
+            {
+                _products.Remove(removeproduct);
+                Console.WriteLine("Product is removed.");
+            }
+            else
+            {
+                Console.WriteLine("Product is not found.");
+            }
         }
 
         public void Init()
@@ -45,12 +54,23 @@ namespace ShopCart.Service
 
         public void ListProducts()
         {
-            throw new NotImplementedException();
+            foreach (Product product in _products)
+            {
+                Console.WriteLine(product);
+            }
         }
 
-        public void SearchProducts()
+        public void SearchProducts(string name)
         {
-            throw new NotImplementedException();
+            Product searchProduct = _products.Find(p => p.Name == name);
+            if (searchProduct != null)
+            {
+                Console.WriteLine(searchProduct.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Product is not found.");
+            }
         }
 
         public void UpdateProduct(uint id)

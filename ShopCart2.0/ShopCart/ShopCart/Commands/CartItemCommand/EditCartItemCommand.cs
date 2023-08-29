@@ -9,9 +9,15 @@ namespace ShopCart.Commands.CartItem
 {
     internal class EditCartItemCommand : ICommandHandler
     {
+        private IApplication _application;
+        public EditCartItemCommand(IApplication application)
+        {
+            _application = application;
+        }
         public void Execute(CommandArguments args)
         {
-            throw new NotImplementedException();
+            uint itemId = (uint)args.AsNumber(0);
+            _application.GetCartDatabase().EditCartItem(itemId);
         }
 
         public string GetHelp()
