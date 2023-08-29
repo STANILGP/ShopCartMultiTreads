@@ -18,7 +18,7 @@ namespace ShopCart
         private EventWaitHandle _closeApp = new(false, EventResetMode.ManualReset);
         private IDatabaseService _databaseService;
         private ICartDatabase _cartDatabase;
-        private UserRole _role = UserRole.None;
+        
         private List<CommandItem> _commands = new();
         private User? _user;
         public List<ShopCartItem>shopCartItems = new();
@@ -51,17 +51,23 @@ namespace ShopCart
            return _databaseService;
         }
 
-       
+        public UserRole GetRole()
+        {
+            return _user.Role;
+        }
 
-        public void Run( User user)
+        public void SetRole(UserRole role)
+        {
+            _user.Role = role;
+        }
+
+        public void Run( User user , List<string> mes)
         {
             while (!_closeApp.WaitOne(0))
             {
-                var clientline = user.Command.First();
-                if (clientline != null)
+                string CommandLine = mes.First();
+                if (CommandLine != null)
                 {
-                    string CommandLine = user.Command.First();
-                   
                         try
                         {
                             (string cmd, string argStr) = CommandParser.Parse(CommandLine);
@@ -69,7 +75,7 @@ namespace ShopCart
 
                             var cmdItem = _commands.Find(x => x.Handler.GetName() == cmd);
 
-                            if (cmdItem != null && cmdItem.Roles.Contains(_role))
+                            if (cmdItem != null && cmdItem.Roles.Contains(_user.Role))
                             {
                                 cmdItem.Handler.Execute(args);
                             }
@@ -85,7 +91,7 @@ namespace ShopCart
                     
                     
                     _databaseService.Cleanup();
-                    user.Command.RemoveAt(0);
+                    mes.RemoveAt(0);
                 }
                 else
                 {
@@ -94,6 +100,10 @@ namespace ShopCart
             }
 
         }
-       
+
+        public void PrintMessage(string m)
+        {
+            Console.WriteLine(m);
+        }
     }
 }

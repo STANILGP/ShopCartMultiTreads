@@ -25,6 +25,8 @@ namespace ShopCart.Server
         private int NextUserID = 0;
         private static IApplication app = new Application();
         public static User user = new User();
+        private static ProtocolParser _protocolParser = new ProtocolParser();
+        private static List<string> mess = new();
         public void StartServer()
         {
             listener.Start();
@@ -55,10 +57,10 @@ namespace ShopCart.Server
                 while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
                 {     //0
                     message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                    user.ReadCommandFromClient(message);
                     Console.WriteLine("Received: " + message);
+                    app.Run(user, _protocolParser.Parse(message));
                 }
-                app.Run(user);
+               
                 Console.WriteLine("Client off.");
                 lock (_lock)
                 {

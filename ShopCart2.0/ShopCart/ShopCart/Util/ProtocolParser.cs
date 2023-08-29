@@ -12,17 +12,17 @@ namespace ShopCart.Util
     {
         string _buffer = "";
 
-        public string[] Parse(string buffer)
+        public List<string> Parse(string buffer)
         {
             _buffer += buffer;
 
             string[] lines = _buffer.Split("\n");
-            string[] result = Array.Empty<string>();
+            _buffer = lines[lines.Length - 1];
 
-            if (lines.Length > 0)
+            List<string> result = new List<string>(lines.Length - 1);
+            for (int i = 0; i < lines.Length ; i++)
             {
-                _buffer = lines.Last();
-                Array.Copy(lines, result, lines.Length - 1);
+                result.Add(lines[i]);
             }
 
             return result;

@@ -21,6 +21,7 @@ namespace ShopCart.Commands.CartItem
             uint ProductId = (uint)args.AsNumber(0);
             uint Q = (uint)args.AsNumber(1);
             _application.GetCartDatabase().AddCartItem(ProductId,Q);
+            
         }
 
         public string GetHelp()
