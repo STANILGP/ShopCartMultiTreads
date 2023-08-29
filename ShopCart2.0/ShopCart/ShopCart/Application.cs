@@ -23,6 +23,10 @@ namespace ShopCart
         private User? _user;
         public List<ShopCartItem>shopCartItems = new();
         public List<Product> productItems = new();
+        public List<Product> LProduct()
+        {
+            return productItems;
+        }
         public List<ShopCartItem> LShopCartItems()
         {
             return shopCartItems;
