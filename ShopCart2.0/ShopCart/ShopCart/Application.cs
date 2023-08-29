@@ -18,7 +18,6 @@ namespace ShopCart
         private EventWaitHandle _closeApp = new(false, EventResetMode.ManualReset);
         private IDatabaseService _databaseService;
         private ICartDatabase _cartDatabase;
-        
         private List<CommandItem> _commands = new();
         private User? _user;
         public List<ShopCartItem>shopCartItems = new();
@@ -90,7 +89,7 @@ namespace ShopCart
                         }
                     
                     
-                    _databaseService.Cleanup();
+                  //  _databaseService.Cleanup();
                     mes.RemoveAt(0);
                 }
                 else
