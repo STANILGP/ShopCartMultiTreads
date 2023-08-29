@@ -6,21 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Entity
 {
-    internal class CartItem
+    internal class ShopCartItem
     {
         public uint Id { get; set; }
         public uint ProductId { get; set; }
         public uint Quantity { get; set; }
-        public CartItem(uint id,uint productId, uint quantity) 
-        {
-            Id = id;
-            ProductId=productId;
-            Quantity = quantity;
-        }
-        public CartItem() 
-        { 
         
-        }
 
 
     }

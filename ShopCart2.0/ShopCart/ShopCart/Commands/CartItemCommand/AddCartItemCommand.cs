@@ -1,4 +1,5 @@
-﻿using ShopCart.Service;
+﻿using ShopCart.Entity;
+using ShopCart.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace ShopCart.Commands.CartItem
         }
         public void Execute(CommandArguments args)
         {
-            int id = args.AsNumber(0);
-            int Q = args.AsNumber(1);
-           // _application.GetCartDatabase.AddCartItem(id, Q);
+            uint ProductId = (uint)args.AsNumber(0);
+            uint Q = (uint)args.AsNumber(1);
+            _application.GetCartDatabase().AddCartItem(ProductId,Q);
         }
 
         public string GetHelp()

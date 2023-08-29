@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class CartDatabase : CartItem , ICartDatabase
+    internal class CartDatabase :ShopCartItem, ICartDatabase
     {
-        public void AddCartItem(uint ID,uint ProductId,uint Quantity)
+        private Application app;
+        List<ShopCartItem> _shopCartItems;  
+        public CartDatabase(Application _app) 
         {
-            
+            app= _app;
+            _shopCartItems = app.LShopCartItems();
+        }
+        public void AddCartItem(uint productID, uint Quantity)
+        {
+            ShopCartItem item = new ShopCartItem();
+            item.Id = (uint)_shopCartItems.Count;
+            item.ProductId = productID;
+            item.Quantity = Quantity;
+            _shopCartItems.Add(item);
         }
 
         public void EditCartItem()

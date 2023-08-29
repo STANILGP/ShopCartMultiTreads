@@ -20,8 +20,13 @@ namespace ShopCart
         private ICartDatabase _cartDatabase;
         private UserRole _role = UserRole.None;
         private List<CommandItem> _commands = new();
-        private User _user;
-
+        private User? _user;
+        public List<ShopCartItem>shopCartItems = new();
+        public List<Product> productItems = new();
+        public List<ShopCartItem> LShopCartItems()
+        {
+            return shopCartItems;
+        }
         public void Exit()
         {
             _closeApp.Set();
