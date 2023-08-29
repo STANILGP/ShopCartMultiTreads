@@ -10,9 +10,11 @@ namespace ShopCart.Service
     internal interface ICartDatabase 
     {
         public void AddCartItem(uint productID,uint Quantity);
-        public void RemoveCartItem();
+        public void RemoveCartItem(uint productID);
         public void EditCartItem(uint productID);
-        public void SearchProduct();
+        public void SearchProduct(string name);
         public void ListProduct();
+        public void CheckOut();
+
     }
 }

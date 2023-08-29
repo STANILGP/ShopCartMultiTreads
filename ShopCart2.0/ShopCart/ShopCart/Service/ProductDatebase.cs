@@ -28,9 +28,16 @@ namespace ShopCart.Service
             _products.Add(product);
         }
 
-        public void Cleanup()
+        public void Save()
         {
-            throw new NotImplementedException();
+          string filename = "Product.txt";
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                foreach (Product field in _products)
+                {
+                    writer.WriteLine(field.ToString());
+                }
+            }
         }
 
         public void DeleteProduct(uint id)
@@ -47,11 +54,25 @@ namespace ShopCart.Service
             }
         }
 
-        public void Init()
+        public void Read(string filename)
         {
-            throw new NotImplementedException();
-        }
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                string line;
 
+                while ((line = sr.ReadLine()) != null /*|| (line = sr.ReadLine()) != ""*/)
+                {
+                    string[] parts = line.Split('*');
+                    uint id = uint.Parse(parts[1]);
+                    string name = parts[2].Trim();
+                    string description = parts[3].Trim(); ;
+                    float price = float.Parse(parts[4].Trim());
+                    uint Quantity = uint.Parse(parts[5].Trim());
+                    _products.Add(new Product { Id = (uint)id, Name = name, Description = description, Price = price, Quantity = Quantity });
+                }
+            }
+
+        }
         public void ListProducts()
         {
             foreach (Product product in _products)

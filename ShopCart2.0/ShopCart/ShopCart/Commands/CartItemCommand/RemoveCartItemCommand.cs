@@ -9,19 +9,25 @@ namespace ShopCart.Commands.CartItem
 {
     internal class RemoveCartItemCommand : ICommandHandler
     {
+        private IApplication _application;
+        public RemoveCartItemCommand(IApplication application)
+        {
+            _application = application;
+        }
         public void Execute(CommandArguments args)
         {
-            throw new NotImplementedException();
+            uint id = (uint)args.AsNumber(0);
+            _application.GetCartDatabase().EditCartItem(id);
         }
 
         public string GetHelp()
         {
-            throw new NotImplementedException();
+            return "RemoveCartItem({Id})";
         }
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "RemoveCartItem";
         }
     }
 }

@@ -5,29 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopCart.Commands.CartItem
+namespace ShopCart.Commands.CartItemCommand
 {
-    internal class EditCartItemCommand : ICommandHandler
+    internal class CheckOut : ICommandHandler
     {
         private IApplication _application;
-        public EditCartItemCommand(IApplication application)
+
+        public CheckOut(IApplication application)
         {
             _application = application;
         }
         public void Execute(CommandArguments args)
         {
-            uint itemId = (uint)args.AsNumber(0);
-            _application.GetCartDatabase().EditCartItem(itemId);
+            _application.GetCartDatabase().CheckOut();
         }
 
         public string GetHelp()
         {
-            return "EditShopCart({Id})";
+            return "CheckOut()";
         }
 
         public string GetName()
         {
-           return "EditShopCart";
+           return "CheckOut";
         }
     }
 }

@@ -18,6 +18,7 @@ namespace ShopCart.Commands.ProductCommand
         {
             string name = args.AsString(0);
             _application.GetDatabaseService().SearchProducts(name);
+            _application.GetCartDatabase().SearchProduct(name);
         }
 
         public string GetHelp()
