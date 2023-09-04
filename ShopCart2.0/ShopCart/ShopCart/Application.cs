@@ -18,7 +18,6 @@ using System.Windows.Input;
 
 namespace ShopCart
 {
-    //Bug itemList
     class RoleList
     {
         public static UserRole[] All() { return new[] { UserRole.Admin, UserRole.Client, UserRole.Operator, UserRole.None }; }
@@ -38,7 +37,6 @@ namespace ShopCart
         private static ProtocolParser _protocolParser = new ProtocolParser();
         public Application()
         { 
-            //_user = user;
             _commands.Add(new CommandItem(RoleList.All(), new LoginCommand(this)));
             _commands.Add(new CommandItem(RoleList.All(), new ExitCommand(this)));
             _commands.Add(new CommandItem(RoleList.All(), new HelpCommand(this)));
