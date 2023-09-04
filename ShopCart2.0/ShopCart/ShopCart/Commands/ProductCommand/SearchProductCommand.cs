@@ -30,5 +30,9 @@ namespace ShopCart.Commands.ProductCommand
         {
             return "Search";
         }
+        public string Mess()
+        {
+            return "Searching...";
+        }
     }
 }

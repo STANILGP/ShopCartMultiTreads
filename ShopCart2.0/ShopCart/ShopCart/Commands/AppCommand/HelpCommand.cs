@@ -32,12 +32,16 @@ namespace ShopCart.Commands.AppCommand
 
         public string GetHelp()
         {
-            return "Help";
+            return "help()";
         }
 
         public string GetName()
         {
-            return "Help";
+            return "help";
+        }
+        public string Mess()
+        {
+            return "";
         }
     }
 }

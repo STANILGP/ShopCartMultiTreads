@@ -17,7 +17,7 @@ namespace ShopCart.Commands.CartItem
         public void Execute(CommandArguments args)
         {
             uint id = (uint)args.AsNumber(0);
-            _application.GetCartDatabase().EditCartItem(id);
+            _application.GetCartDatabase().RemoveCartItem(id);
         }
 
         public string GetHelp()
@@ -28,6 +28,10 @@ namespace ShopCart.Commands.CartItem
         public string GetName()
         {
             return "RemoveCartItem";
+        }
+        public string Mess()
+        {
+            return "You remove the product from your cart";
         }
     }
 }

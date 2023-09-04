@@ -11,9 +11,11 @@ namespace ShopCart.Service
     {
         public void AddCartItem(uint productID,uint Quantity);
         public void RemoveCartItem(uint productID);
-        public void EditCartItem(uint productID);
+        public void EditCartItem(uint productID, uint quantity);
         public void SearchProduct(string name);
-        public void ListProduct();
+        public string ListProducts();
+        public string ListCartItem();
+
         public void CheckOut();
 
     }

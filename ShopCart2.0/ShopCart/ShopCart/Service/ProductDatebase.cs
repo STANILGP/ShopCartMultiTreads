@@ -1,36 +1,39 @@
 ﻿using ShopCart.Entity;
+using ShopCart.Server;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class ProductDatebase :Product, IDatabaseService
+    internal class ProductDatebase : Product, IDatabaseService
     {
         private Application app;
-        List<Product> _products;
+        private List<Product> _products = new List<Product>();
         public ProductDatebase(Application _app)
         {
             app = _app;
-            _products = app.LProduct();
+            _products = app.GetProductL();
         }
+
         public void AddProduct(string name, string des, float price, uint quantity)
         {
             Product product = new Product();
-            product.Id = (uint)_products.Count();
+            product.Id = (uint)_products.Count + 1;
             product.Name = name;
-            product.Description = des;
             product.Price = price;
-            product.Quantity = quantity;
+            product.Quantity= quantity;
+            product.Description = des;
             _products.Add(product);
         }
 
         public void Save()
         {
-          string filename = "Product.txt";
+            string filename = "Product.txt";
             using (StreamWriter writer = new StreamWriter(filename))
             {
                 foreach (Product field in _products)
@@ -42,25 +45,33 @@ namespace ShopCart.Service
 
         public void DeleteProduct(uint id)
         {
-            Product removeproduct = _products.Find(p => p.Id == id);
-            if (removeproduct != null)
+            try
             {
-                _products.Remove(removeproduct);
-                Console.WriteLine("Product is removed.");
+                Product removeproduct = _products.Find(p => p.Id == id);
+                if (removeproduct != null)
+                {
+                    _products.Remove(removeproduct);
+                    throw new Exception("Product is removed.");
+                }
+                else
+                {
+                    throw new Exception("Product is not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Product is not found.");
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public void Read(string filename)
+        public void Read()
         {
+            string filename = "Product.txt";
             using (StreamReader sr = new StreamReader(filename))
             {
                 string line;
-
-                while ((line = sr.ReadLine()) != null /*|| (line = sr.ReadLine()) != ""*/)
+                
+                while ((line = sr.ReadLine()) != null && line!="")
                 {
                     string[] parts = line.Split('*');
                     uint id = uint.Parse(parts[1]);
@@ -73,70 +84,82 @@ namespace ShopCart.Service
             }
 
         }
-        public void ListProducts()
+        public string ListProducts()
         {
-            foreach (Product product in _products)
+            string a=null;
+            if (_products != null)
             {
-                Console.WriteLine(product);
+                foreach (Product product in _products)
+                {
+                 a =a+ "\n "+product.ToString();
+                }
             }
+            else
+            {
+               a= "We have 0 products";
+            }
+            return a;
         }
 
         public void SearchProducts(string name)
         {
-            Product searchProduct = _products.Find(p => p.Name == name);
-            if (searchProduct != null)
+            try
             {
-                Console.WriteLine(searchProduct.ToString());
+                Product searchProduct = _products.Find(p => p.Name == name);
+                if (searchProduct != null)
+                {
+                    throw new Exception(searchProduct.ToString());
+                }
+                else
+                {
+                    throw new Exception("Product is not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Product is not found.");
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public void UpdateProduct(uint id)
+        public void UpdateProduct(uint id,string editcom,string newArg )
         {
-            Product editProduct = _products.Find(p => p.Id == id);
-            Console.WriteLine(editProduct.ToString());
-            string? editcom = Console.ReadLine();
-            
-                Console.WriteLine("What you will edit?");
-                Console.WriteLine("Name/Description/Price/Quantity");
+            try
+            {
+                Product editProduct = new();
+                editProduct = _products.Find(p => p.Id == id);
+
                 if (editcom == "Name")
                 {
-                    Console.WriteLine("New Name:");
-                    string? editName = Console.ReadLine();
-                    editProduct.Name = editName;
+                    editProduct.Name = newArg;
                 }
 
                 else if (editcom == "Description")
                 {
-                    Console.WriteLine("New Description:");
-                    string? editDiscription = Console.ReadLine();
-                    editProduct.Description = editDiscription;
+                    editProduct.Description = newArg;
                 }
 
                 else if (editcom == "Price")
                 {
-                    Console.WriteLine("New Price:");
-                    float editPrice = float.Parse(Console.ReadLine());
-                    editProduct.Price = editPrice;
+                    editProduct.Price = float.Parse(newArg);
                 }
 
                 else if (editcom == "Quantity")
                 {
-                    Console.WriteLine("New Quantity:");
-                    uint editQuantity = uint.Parse(Console.ReadLine());
-                    editProduct.Quantity = editQuantity;
+                    editProduct.Quantity = uint.Parse(newArg);
                 }
 
                 else
                 {
-                    Console.WriteLine("Error");
+                    throw new Exception("Error");
                 }
-            
-        
 
+
+                throw new Exception(_products.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
-}
 }

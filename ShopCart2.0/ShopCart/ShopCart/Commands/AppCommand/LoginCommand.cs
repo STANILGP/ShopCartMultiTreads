@@ -18,6 +18,7 @@ namespace ShopCart.Commands.AppCommand
 
         public void Execute(CommandArguments args)
         {
+            var commands = _application.GetCommands();
             var role = args.AsRole(0);
             _application.SetRole(role);
         }
@@ -30,6 +31,10 @@ namespace ShopCart.Commands.AppCommand
         public string GetName()
         {
             return "Login";
+        }
+        public string Mess()
+        {
+            return "Loggin was sucsess";
         }
     }
 }

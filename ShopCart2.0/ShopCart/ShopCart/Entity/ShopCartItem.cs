@@ -11,7 +11,10 @@ namespace ShopCart.Entity
         public uint Id { get; set; }
         public uint ProductId { get; set; }
         public uint Quantity { get; set; }
-        
+        public override string ToString()
+        {
+            return $"*{Id}*{ProductId}*{Quantity}*";
+        }
 
 
     }

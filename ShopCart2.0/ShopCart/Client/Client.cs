@@ -6,7 +6,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace ShopCart.Client
 {
     internal class Client
@@ -20,19 +19,38 @@ namespace ShopCart.Client
             NetworkStream stream = client.GetStream();
             Console.WriteLine("Please enter command or help() for list of commands.");
 
-            while (true)
+            try
             {
-
-                Console.Write("> ");
-                string? commandLine = Console.ReadLine();
-                if (commandLine != null)
+                Task.Run(() => ReceiveMessages(stream)); 
+                while (true)
                 {
-                    byte[] data = Encoding.ASCII.GetBytes(commandLine);
-                    stream.Write(data, 0, data.Length);
+                    string? commandLine = Console.ReadLine();
+                    if (commandLine != null)
+                    {
+                        byte[] data = Encoding.ASCII.GetBytes(commandLine);
+                        stream.Write(data, 0, data.Length);
+                    } 
                 }
             }
-            stream.Close();
-            client.Close();
+            finally
+            {
+                stream.Close();
+                client.Close();
+            }
+        }
+
+        static async Task ReceiveMessages(NetworkStream stream)
+        {
+            byte[] buffer = new byte[1024];
+            while (true)
+            {
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                if (bytesRead > 0)
+                {
+                    string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                    Console.WriteLine(message);
+                }
+            }
         }
     }
 }

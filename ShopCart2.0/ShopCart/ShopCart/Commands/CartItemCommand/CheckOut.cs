@@ -29,5 +29,9 @@ namespace ShopCart.Commands.CartItemCommand
         {
            return "CheckOut";
         }
+        public string Mess()
+        {
+            return "You CheckOut your cart";
+        }
     }
 }

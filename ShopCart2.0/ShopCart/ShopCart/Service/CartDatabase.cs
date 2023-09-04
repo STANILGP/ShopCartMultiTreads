@@ -10,79 +10,137 @@ namespace ShopCart.Service
     internal class CartDatabase :ShopCartItem, ICartDatabase
     {
         private Application app;
-        List<ShopCartItem> _shopCartItems;  
-        List<Product> _products;
-        public CartDatabase(Application _app) 
+        public List<Product> _products;
+        public User user;// = new User();
+        public int a = 0;
+        public CartDatabase(Application _app,User _user) 
         {
             app= _app;
-            _shopCartItems = app.LShopCartItems();
-            _products = app.LProduct();
+            _products = app.GetProductL();
+             user = _user;
         }
         public void AddCartItem(uint productID, uint Quantity)
         {
             ShopCartItem item = new ShopCartItem();
-            item.Id = (uint)_shopCartItems.Count;
+            item.Id = (uint)a+1;
             item.ProductId = productID;
             item.Quantity = Quantity;
-            _shopCartItems.Add(item);
+            user.Items.Add(item);
+            a++;
         }
 
         public void CheckOut()
         {
-            double sum = 0;
-
-            foreach (ShopCartItem item in _shopCartItems)
+            try
             {
-                uint ProductId = (uint)item.Id;
-               Product product = _products.Find(p => p.Id == ProductId);
-                sum += item.Quantity * product.Price;
-                product.Quantity -= item.Quantity;
+                double sum = 0;
+
+                foreach (ShopCartItem item in user.Items)
+                {
+                    uint ProductId = (uint)item.ProductId;
+                    Product product = new Product();
+                    product= _products.Find(p => p.Id == ProductId);
+                    if (product == null)
+                    {
+                        throw new Exception("The item was not found .");
+                    }
+
+                    sum += item.Quantity * product.Price;
+                    product.Quantity -= item.Quantity;
+                    if (product.Quantity < 0)
+                    {
+                        throw new Exception("There are no items available for this item " + product.Name);
+                        break;
+                    }
+                }
+                user.Items.Clear();
+                throw new Exception("Sum: " + sum);
+                
             }
-            Console.WriteLine(sum);
-            _shopCartItems.Clear();
+            catch (Exception ex)
+            {
+                Console.WriteLine( ex.Message);
+            }
         }
 
-        public void EditCartItem(uint productId)
+        public void EditCartItem(uint productId,uint newQuantity)
         {
-            ShopCartItem editProduct = _shopCartItems.Find(p => p.Id == productId);
+            ShopCartItem editProduct = user.Items.Find(p => p.Id == productId);
             Console.WriteLine(editProduct.ToString());
-            Console.WriteLine("New Quantity: ");
-            int newQuantity = int.Parse(Console.ReadLine());
             editProduct.Quantity = (uint)newQuantity;
         }
 
-        public void ListProduct()
+        public string ListProducts()
         {
-            foreach (Product product in _products)
+            string a = null;
+            if (_products != null)
             {
-                Console.WriteLine(product);
-            }
-        }
-
-        public void RemoveCartItem(uint productId)
-        {
-           ShopCartItem removeItem = _shopCartItems.Find(p => p.Id == productId);
-            if (removeItem != null)
-            {
-                _shopCartItems.Remove(removeItem);
-                Console.WriteLine("Item is removed.");
+                foreach (Product product in _products)
+                {
+                    a = a + "\n " + product.ToString();
+                }
             }
             else
             {
-                Console.WriteLine("Item is not found.");
+                a = "We have 0 products";
             }
+            return a;
+        }
+        public string ListCartItem()
+        {
+            string a = null;
+            if (_products != null)
+            {
+                foreach (ShopCartItem cartitem in user.Items)
+                {
+                    a = a + "\n " + cartitem.ToString();
+                }
+            }
+            else
+            {
+                a = "You have 0 Items";
+            }
+            return a;
+        }
+        public void RemoveCartItem(uint productId)
+        {
+            try
+            { 
+                  ShopCartItem removeItem = user.Items.Find(p => p.Id == productId);
+                  if (removeItem != null)
+                  {
+                       user.Items.Remove(removeItem);
+                       throw new Exception("Item is removed.");
+                  }
+                  else
+                  {
+                        throw new Exception("Item is not found.");
+                  }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
         public void SearchProduct(string name)
         {
-            Product searchProduct = _products.Find(p => p.Name == name);
-            if (searchProduct != null)
+            try
             {
-                Console.WriteLine(searchProduct.ToString());
+                Product searchProduct = _products.Find(p => p.Name == name);
+                if (searchProduct != null)
+                {
+                    Console.WriteLine(searchProduct.ToString());
+                }
+                else
+                {
+                    throw new Exception("Product is not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Product is not found.");
+                Console.WriteLine(ex.Message);
             }
         }
     }

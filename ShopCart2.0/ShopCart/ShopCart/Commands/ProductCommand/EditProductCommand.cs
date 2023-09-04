@@ -18,8 +18,11 @@ namespace ShopCart.Commands.Product
         }
         public void Execute(CommandArguments args)
         {
-            uint id = (uint)args.AsNumber(3);
-            _application.GetDatabaseService().UpdateProduct(id);
+            uint id = (uint)args.AsNumber(0);
+            string editcom=args.AsString(1);
+            string newArg=args.AsString(2);
+            _application.GetDatabaseService().UpdateProduct(id, editcom, newArg);
+
         }
 
         public string GetHelp()
@@ -30,6 +33,10 @@ namespace ShopCart.Commands.Product
         public string GetName()
         {
            return "EditProduct";
+        }
+        public string Mess()
+        {
+            return "You change the product";
         }
     }
 }

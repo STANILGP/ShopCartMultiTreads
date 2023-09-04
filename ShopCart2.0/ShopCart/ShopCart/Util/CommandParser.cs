@@ -45,7 +45,7 @@ namespace ShopCart.Util
 
                 SkipWhitespace(args, ref pos);
 
-                if (pos < args.Length && args[pos] != ';')
+                if (pos < args.Length && args[pos] != ',')
                 {
                     throw new Exception($"Invalid characters after argument at position: {parsedArguments.Count + 1}");
                 }

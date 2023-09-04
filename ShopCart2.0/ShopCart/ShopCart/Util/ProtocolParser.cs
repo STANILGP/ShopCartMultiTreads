@@ -10,12 +10,11 @@ namespace ShopCart.Util
 {
     internal class ProtocolParser
     {
-        string _buffer = "";
-
+        
         public List<string> Parse(string buffer)
         {
+            string _buffer = "";
             _buffer += buffer;
-
             string[] lines = _buffer.Split("\n");
             _buffer = lines[lines.Length - 1];
 

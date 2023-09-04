@@ -48,5 +48,6 @@ namespace ShopCart.Service
         void Execute(CommandArguments args);
         string GetName();
         string GetHelp();
+        string Mess();
     }
 }

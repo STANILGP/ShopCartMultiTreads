@@ -14,12 +14,12 @@ namespace ShopCart
         static void Main(string[] args)
         {
             Logger.SetLogLevel(LogLevel.Debug);
-            IApplication app = new Application();
+           // IApplication app = new Application();
             ShopServer server = new ShopServer();
             server.StartServer();
             Console.CancelKeyPress += delegate (object? sender, ConsoleCancelEventArgs e) {
                 e.Cancel = true;
-                app.Exit();
+                //app.Exit();
                 server.StopServer();
             };
            

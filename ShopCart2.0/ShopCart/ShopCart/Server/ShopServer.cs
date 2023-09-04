@@ -21,30 +21,30 @@ namespace ShopCart.Server
         private static int port = 12345;
         private static TcpListener listener = new TcpListener(ipAddress, port);
         private static List<User> userL = new List<User>();
-        private UserRole UserRole=UserRole.None;
+        private UserRole UserRole = UserRole.None;
         private int NextUserID = 0;
-        private static IApplication app = new Application();
-        public static User user = new User();
-        private static ProtocolParser _protocolParser = new ProtocolParser();
-        private static List<string> mess = new();
+        private static IApplication app;
+        public static User user;
+
         public void StartServer()
         {
             listener.Start();
             Console.WriteLine("Server working...");
             while (true)
             {
+              
                 TcpClient client = listener.AcceptTcpClient();
-                //if (!listener.Pending())
                 Console.WriteLine("New Client");
-
+                user = new User();
+                app = new Application();
                 lock (_lock)
                 {
-                    user.AddUsers(client,NextUserID,UserRole);
+                    user.AddUsers(client, NextUserID, UserRole);
                     userL.Add(user);
                     NextUserID++;
                 }
                 Thread clientThread = new Thread(() => ProcessClient(client, user));
-                clientThread.Start(); 
+                clientThread.Start();
             }
         }
         public static void ProcessClient(TcpClient client, User user)
@@ -53,14 +53,15 @@ namespace ShopCart.Server
             {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
-               
+                app.R();
                 while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-                {     //0
+                {
                     message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                     Console.WriteLine("Received: " + message);
-                    app.Run(user, _protocolParser.Parse(message));
+                    string r= app.Run(user,message);
+                    Notification.SendMessageToClient(client, r);
                 }
-               
+
                 Console.WriteLine("Client off.");
                 lock (_lock)
                 {

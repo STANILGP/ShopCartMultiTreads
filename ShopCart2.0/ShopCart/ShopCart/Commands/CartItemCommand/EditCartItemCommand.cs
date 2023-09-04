@@ -17,7 +17,8 @@ namespace ShopCart.Commands.CartItem
         public void Execute(CommandArguments args)
         {
             uint itemId = (uint)args.AsNumber(0);
-            _application.GetCartDatabase().EditCartItem(itemId);
+            uint quantity= (uint)args.AsNumber(1);
+            _application.GetCartDatabase().EditCartItem(itemId,quantity);
         }
 
         public string GetHelp()
@@ -28,6 +29,10 @@ namespace ShopCart.Commands.CartItem
         public string GetName()
         {
            return "EditShopCart";
+        }
+        public string Mess()
+        {
+            return "You change quantity";
         }
     }
 }

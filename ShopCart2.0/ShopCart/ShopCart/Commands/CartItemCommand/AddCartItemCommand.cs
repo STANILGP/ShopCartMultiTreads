@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ShopCart.Commands.CartItem
 {
@@ -21,7 +22,6 @@ namespace ShopCart.Commands.CartItem
             uint ProductId = (uint)args.AsNumber(0);
             uint Q = (uint)args.AsNumber(1);
             _application.GetCartDatabase().AddCartItem(ProductId,Q);
-            
         }
 
         public string GetHelp()
@@ -32,6 +32,10 @@ namespace ShopCart.Commands.CartItem
         public string GetName()
         {
             return "AddCartItem";
+        }
+        public string Mess()
+        {
+            return "You add item in you cart";
         }
     }
 }

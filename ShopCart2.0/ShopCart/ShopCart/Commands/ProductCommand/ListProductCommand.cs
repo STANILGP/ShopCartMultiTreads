@@ -17,7 +17,7 @@ namespace ShopCart.Commands.ProductCommand
         public void Execute(CommandArguments args)
         {
             _application.GetDatabaseService().ListProducts();
-            _application.GetCartDatabase().ListProduct();
+            _application.GetCartDatabase().ListProducts();
         }
         public string GetHelp()
         {
@@ -26,6 +26,10 @@ namespace ShopCart.Commands.ProductCommand
         public string GetName()
         {
             return "ListProduct";
+        }
+        public string Mess()
+        {
+            return _application.GetDatabaseService().ListProducts();
         }
     }
 }

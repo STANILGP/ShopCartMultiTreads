@@ -29,5 +29,9 @@ namespace ShopCart.Commands.Product
         {
             return "RemoveProduct";
         }
+        public string Mess()
+        {
+            return "Product was remove";
+        }
     }
 }

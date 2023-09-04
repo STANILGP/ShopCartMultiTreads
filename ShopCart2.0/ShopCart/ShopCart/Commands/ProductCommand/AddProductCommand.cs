@@ -22,7 +22,6 @@ namespace ShopCart.Commands.Product
             float price = args.AsDecimal(2);
             uint quantity = (uint)args.AsNumber(3);
             _application.GetDatabaseService().AddProduct(name,description,price,quantity);
-            Console.WriteLine($"You add {name} in Product List");
         }
 
         public string GetHelp()
@@ -33,6 +32,10 @@ namespace ShopCart.Commands.Product
         public string GetName()
         {
             return "AddProduct";
+        }
+        public string Mess()
+        {
+            return "You add product in Product List";
         }
     }
 }
