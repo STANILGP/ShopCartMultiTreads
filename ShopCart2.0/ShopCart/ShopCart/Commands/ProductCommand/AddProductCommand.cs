@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ShopCart.Commands.Product
 {
-    internal class AddProductCommand : ICommandHandler
+    public class AddProductCommand : ICommandHandler
     {
         private IApplication _application;
         public AddProductCommand(IApplication application)

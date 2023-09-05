@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Entity
 {
-    internal enum UserRole
+    public enum UserRole
     {
         None,
         Admin,

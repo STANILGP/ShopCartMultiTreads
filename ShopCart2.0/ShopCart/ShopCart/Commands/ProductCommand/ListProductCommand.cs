@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Commands.ProductCommand
 {
-    internal class ListProductCommand : ICommandHandler
+    public class ListProductCommand : ICommandHandler
     {
         private IApplication _application;
         public ListProductCommand(IApplication application)

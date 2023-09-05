@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Util
 {
-    internal enum LogLevel
+    public enum LogLevel
     {
         Error = 0,
         Warning = 1,
@@ -14,7 +14,7 @@ namespace ShopCart.Util
         Debug = 3
     }
 
-    internal class Logger
+    public class Logger
     {
         private static LogLevel _logLevel = 0;
 

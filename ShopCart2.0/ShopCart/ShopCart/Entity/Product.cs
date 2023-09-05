@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Entity
 {
-    internal class Product
+    public class Product
     {
         public uint Id { get; set; }
         public string? Name { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Server
 {
-    internal class Notification
+    public class Notification
     {
         public static void SendMessageToClient(TcpClient client, string message)
         {

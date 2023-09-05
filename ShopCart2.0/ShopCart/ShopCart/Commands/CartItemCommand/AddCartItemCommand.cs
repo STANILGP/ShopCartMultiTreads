@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace ShopCart.Commands.CartItem
 {
-    internal class AddCartItemCommand : ICommandHandler
+    public class AddCartItemCommand : ICommandHandler
     {
         private IApplication _application;
 

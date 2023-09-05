@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Commands.CartItemCommand
 {
-    internal class CheckOut : ICommandHandler
+    public class CheckOut : ICommandHandler
     {
         private IApplication _application;
 

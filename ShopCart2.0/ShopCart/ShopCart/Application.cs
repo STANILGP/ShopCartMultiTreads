@@ -26,7 +26,7 @@ namespace ShopCart
         public static UserRole[] Users() { return new[] { UserRole.Admin, UserRole.Client, UserRole.Operator }; }
         public static UserRole[] AdminAndOperator() { return new[] { UserRole.Admin, UserRole.Operator }; }
     }
-    internal class Application : IApplication
+    public class Application : IApplication
     {
         private EventWaitHandle _closeApp = new(false, EventResetMode.ManualReset);
         private IDatabaseService? _databaseService;

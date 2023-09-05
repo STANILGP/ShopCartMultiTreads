@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Commands.AppCommand
 {
-    internal class HelpCommand : ICommandHandler
+   public class HelpCommand : ICommandHandler
     {
         private IApplication _application;
 

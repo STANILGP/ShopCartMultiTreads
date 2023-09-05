@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal interface IDatabaseService
+    public interface IDatabaseService
     {
         void Read();
         void Save();

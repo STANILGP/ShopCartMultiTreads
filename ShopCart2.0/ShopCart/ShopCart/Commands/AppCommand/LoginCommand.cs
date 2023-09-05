@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Commands.AppCommand
 {
-    internal class LoginCommand : ICommandHandler
+    public class LoginCommand : ICommandHandler
     {
         private IApplication _application;
         public LoginCommand(IApplication application)

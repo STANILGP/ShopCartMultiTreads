@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ShopCart.Commands.AppCommand
 {
-    internal class ExitCommand : ICommandHandler
+    public class ExitCommand : ICommandHandler
     {
         private IApplication _application;
         public ExitCommand(IApplication application)

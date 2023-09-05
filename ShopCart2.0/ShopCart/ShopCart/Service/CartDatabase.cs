@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class CartDatabase :ShopCartItem, ICartDatabase
+    public class CartDatabase :ShopCartItem, ICartDatabase
     {
         private Application app;
         public List<Product> _products;

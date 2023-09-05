@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Entity
 {
-    internal class User
+    public class User
     {
         ProtocolParser _protocolParser = new ProtocolParser();
         public TcpClient? Client { get; set; }

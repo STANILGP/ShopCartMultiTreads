@@ -1,6 +1,6 @@
-﻿using Microsoft.Build.Tasks.Deployment.Bootstrapper;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ShopCart.Entity;
+using Product = ShopCart.Entity.Product;
 
 namespace ShopCart.Tests
 {
@@ -11,14 +11,19 @@ namespace ShopCart.Tests
         public void ToString_ReturnsCorrectString()
         {
             // Arrange
-            Product product = new Product();
-            
+           Product product = new Product();
+            product.Id = 1;
+            product.Name = "Apple";
+            product.Description = "Big Red";
+            product.Price = 1;
+            product.Quantity = 100;
+
 
             // Act
             var result = product.ToString();
 
             // Assert
-            var expected = "*1*Test Product*Sample Description*20.5*10*";
+            var expected = "*1*Apple*Big Red*1*100*";
             Assert.AreEqual(expected, result);
             
         }

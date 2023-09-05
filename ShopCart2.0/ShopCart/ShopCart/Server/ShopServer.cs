@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Server
 {
-    internal class ShopServer
+    public class ShopServer
     {
         private static readonly object _lock = new object();
         private static string? message;

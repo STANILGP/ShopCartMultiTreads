@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class CommandArguments
+    public class CommandArguments
     {
         private List<object> _arguments;
         public int Count { get { return _arguments.Count; } }
@@ -43,7 +43,7 @@ namespace ShopCart.Service
         }
 
     }
-    internal interface ICommandHandler
+    public interface ICommandHandler
     {
         void Execute(CommandArguments args);
         string GetName();

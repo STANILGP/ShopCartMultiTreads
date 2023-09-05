@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Commands.Product
 {
-    internal class RemoveProductCommand : ICommandHandler
+    public class RemoveProductCommand : ICommandHandler
     {
         private IApplication _application;
         public RemoveProductCommand(IApplication application)

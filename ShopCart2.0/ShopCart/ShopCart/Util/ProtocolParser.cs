@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Util
 {
-    internal class ProtocolParser
+    public class ProtocolParser
     {
         
         public List<string> Parse(string buffer)

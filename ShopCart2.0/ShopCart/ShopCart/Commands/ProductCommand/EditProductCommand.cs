@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace ShopCart.Commands.Product
 {
-    internal class EditProductCommand : ICommandHandler
+    public class EditProductCommand : ICommandHandler
     {
         private IApplication _application;
         public EditProductCommand(IApplication application)

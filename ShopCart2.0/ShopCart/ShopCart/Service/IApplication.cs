@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class CommandItem
+    public class CommandItem
     {
         public ICommandHandler Handler { get; private set; }
         public SortedSet<UserRole> Roles { get; private set; }
@@ -25,7 +25,7 @@ namespace ShopCart.Service
         }
     }
 
-    internal interface IApplication
+    public interface IApplication
     {
         string Run(User user,string mes);
         void Exit();
@@ -36,7 +36,7 @@ namespace ShopCart.Service
         IDatabaseService GetDatabaseService();
         ICartDatabase GetCartDatabase();
         public void R();
-        List<CommandItem> GetCommands();
+        public List<CommandItem> GetCommands();
         void SetRole(UserRole role);
         public UserRole GetRole();
         void PrintMessage(string v);

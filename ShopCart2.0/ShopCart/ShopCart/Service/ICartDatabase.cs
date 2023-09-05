@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal interface ICartDatabase 
+    public interface ICartDatabase 
     {
         public void AddCartItem(uint productID,uint Quantity);
         public void RemoveCartItem(uint productID);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Util
 {
-    internal class CommandParser
+    public class CommandParser
     {
         public static (string, string) Parse(string cmd)
         {

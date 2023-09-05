@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ShopCart.Service
 {
-    internal class ProductDatebase : Product, IDatabaseService
+    public class ProductDatebase : Product, IDatabaseService
     {
         private Application app;
         private List<Product> _products = new List<Product>();
