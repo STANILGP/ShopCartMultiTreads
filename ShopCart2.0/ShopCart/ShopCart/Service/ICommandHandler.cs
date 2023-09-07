@@ -10,6 +10,8 @@ namespace ShopCart.Service
     public class CommandArguments
     {
         private List<object> _arguments;
+       
+
         public int Count { get { return _arguments.Count; } }
 
         public CommandArguments(List<object> argList)

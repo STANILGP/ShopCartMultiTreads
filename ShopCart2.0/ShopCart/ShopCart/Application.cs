@@ -35,6 +35,9 @@ namespace ShopCart
         private User _user ;
         private List<Product> productItems= new();
         private static ProtocolParser _protocolParser = new ProtocolParser();
+
+        public bool IsExitRequested = false;
+
         public Application()
         { 
             _commands.Add(new CommandItem(RoleList.All(), new LoginCommand(this)));
@@ -68,6 +71,7 @@ namespace ShopCart
         public void Exit()
         {
             _closeApp.Set();
+            IsExitRequested = true;
         }
 
         public ICartDatabase GetCartDatabase()

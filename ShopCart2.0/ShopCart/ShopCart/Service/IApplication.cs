@@ -30,8 +30,6 @@ namespace ShopCart.Service
         string Run(User user,string mes);
         void Exit();
         public List<Product> GetProductL();
-       // public List<ShopCartItem> LShopCartItems();
-        //public void SetShopCartL(List<ShopCartItem> items);
         public void SetProductL(List<Product> products);
         IDatabaseService GetDatabaseService();
         ICartDatabase GetCartDatabase();
