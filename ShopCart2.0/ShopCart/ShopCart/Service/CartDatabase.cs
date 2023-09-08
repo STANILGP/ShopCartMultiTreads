@@ -11,7 +11,7 @@ namespace ShopCart.Service
     {
         private Application app;
         public List<Product> _products;
-        public User user;// = new User();
+        public User user;
         public int a = 0;
         public CartDatabase(Application _app,User _user) 
         {

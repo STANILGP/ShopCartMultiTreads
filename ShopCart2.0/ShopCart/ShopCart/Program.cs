@@ -14,15 +14,13 @@ namespace ShopCart
         static void Main(string[] args)
         {
             Logger.SetLogLevel(LogLevel.Debug);
-           //IApplication app = new Application();
             ShopServer server = new ShopServer();
-            server.StartServer();
             Console.CancelKeyPress += delegate (object? sender, ConsoleCancelEventArgs e) {
                 e.Cancel = true;
-                //app.Exit();
                 server.StopServer();
+                Environment.Exit(0);
             };
-           
+           server.StartServer();
 
         }
     }

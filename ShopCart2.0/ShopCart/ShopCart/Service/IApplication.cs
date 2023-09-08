@@ -33,7 +33,6 @@ namespace ShopCart.Service
         public void SetProductL(List<Product> products);
         IDatabaseService GetDatabaseService();
         ICartDatabase GetCartDatabase();
-        public void R();
         public List<CommandItem> GetCommands();
         void SetRole(UserRole role);
         public UserRole GetRole();

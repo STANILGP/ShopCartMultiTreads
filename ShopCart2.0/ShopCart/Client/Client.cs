@@ -17,6 +17,12 @@ namespace ShopCart.Client
             TcpClient client = new TcpClient();
             client.Connect(serverIpAddress, serverPort);
             NetworkStream stream = client.GetStream();
+            Console.CancelKeyPress += delegate (object? sender, ConsoleCancelEventArgs e) {
+                e.Cancel = true;
+                stream.Close();
+                client.Close();
+                Environment.Exit(0);
+            };
             Console.WriteLine("Please enter command or help() for list of commands.");
 
             try

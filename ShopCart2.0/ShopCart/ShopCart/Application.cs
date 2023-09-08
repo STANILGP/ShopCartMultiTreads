@@ -28,15 +28,11 @@ namespace ShopCart
     }
     public class Application : IApplication
     {
-        private EventWaitHandle _closeApp = new(false, EventResetMode.ManualReset);
         private IDatabaseService? _databaseService;
         private ICartDatabase? _cartDatabase;
         private List<CommandItem> _commands = new();
-        private User _user ;
         private List<Product> productItems= new();
-        private static ProtocolParser _protocolParser = new ProtocolParser();
-
-        public bool IsExitRequested = false;
+        private User _user ;
 
         public Application()
         { 
@@ -68,10 +64,12 @@ namespace ShopCart
         { 
             productItems = products;
         }
-        public void Exit()
-        {
-            _closeApp.Set();
-            IsExitRequested = true;
+        public void Exit()//
+        { 
+           _databaseService.Save();
+           _user.Client.Close();
+           
+            
         }
 
         public ICartDatabase GetCartDatabase()
@@ -99,23 +97,18 @@ namespace ShopCart
             _user.Role = role;
         }
 
-        public User GetUser()
-        {
-            return _user;
-        }
         public void SetUser(User user)
         {
             _user = user;
         }
-        public void R()
-        { 
-         _databaseService.Read();
-        }
+        
         public string Run(User user, string mes)
         {
             SetUser(user);
+            _databaseService.Read();
             _cartDatabase = new CartDatabase(this, user);
             List<string> a = new();
+            ProtocolParser _protocolParser = new ProtocolParser();
             a.AddRange(_protocolParser.Parse(mes));
             string MessageForClient="";
             for (int i = 0; i < a.Count; i++)

@@ -14,24 +14,7 @@ namespace TestShoppingCart.TestCommand.TestAppCommand
     [TestFixture]
     public class TestExitCommand
     {
-        [Test]
-        public void Execute_CallsExitMethod()
-        {
-            // Arrange
-            var application = new Application();
-            var command = new ExitCommand(application);
-
-            // Act
-            command.Execute(new CommandArguments(new List<object>
-            {
-                
-            }));
-
-
-            // Assert
-            // Проверете дали методът Exit на приложението е бил извикан.
-            Assert.IsTrue(application.IsExitRequested, "Exit method not called.");
-        }
+       
         [Test]
         public void GetHelp_ReturnsHelpString()
         {

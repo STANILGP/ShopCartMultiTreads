@@ -13,13 +13,11 @@ namespace ShopCart.Entity
     {
         ProtocolParser _protocolParser = new ProtocolParser();
         public TcpClient? Client { get; set; }
-        public int Id { get; set; }
         public UserRole Role { get; set; }
         public List<ShopCartItem> Items { get; set; } = new List<ShopCartItem>();
-        public void AddUsers(TcpClient? client, int br, UserRole role)
+        public void AddUsers(TcpClient? client, UserRole role)
         {
             client = Client;
-            br = Id;
             role = Role;
         }
        
