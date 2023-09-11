@@ -76,7 +76,7 @@ namespace ShopCart.Service
                     string[] parts = line.Split('*');
                     uint id = uint.Parse(parts[1]);
                     string name = parts[2].Trim();
-                    string description = parts[3].Trim(); ;
+                    string description = parts[3].Trim(); 
                     float price = float.Parse(parts[4].Trim());
                     uint Quantity = uint.Parse(parts[5].Trim());
                     _products.Add(new Product { Id = (uint)id, Name = name, Description = description, Price = price, Quantity = Quantity });

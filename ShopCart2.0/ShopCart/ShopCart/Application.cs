@@ -64,12 +64,10 @@ namespace ShopCart
         { 
             productItems = products;
         }
-        public void Exit()//
+        public void Exit()
         { 
            _databaseService.Save();
-           _user.Client.Close();
-           
-            
+            Console.WriteLine("Cleint Disconnect"); 
         }
 
         public ICartDatabase GetCartDatabase()
@@ -101,6 +99,7 @@ namespace ShopCart
         {
             _user = user;
         }
+        public User GetUser() {return _user; }
         
         public string Run(User user, string mes)
         {

@@ -36,6 +36,7 @@ namespace ShopCart.Service
         public List<CommandItem> GetCommands();
         void SetRole(UserRole role);
         public UserRole GetRole();
+        public User GetUser();
         void PrintMessage(string v);
 
     }

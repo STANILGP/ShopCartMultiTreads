@@ -29,7 +29,7 @@ namespace ShopCart.Server
             {
                 if(!listener.Pending())
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(1);
                     continue;
                     
                 }

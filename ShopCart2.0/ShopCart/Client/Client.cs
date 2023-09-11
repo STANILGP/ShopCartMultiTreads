@@ -12,6 +12,7 @@ namespace ShopCart.Client
     {
         static void Main(string[] args)
         {
+            
             IPAddress serverIpAddress = IPAddress.Parse("127.0.0.1");
             int serverPort = 12345;
             TcpClient client = new TcpClient();
@@ -31,11 +32,17 @@ namespace ShopCart.Client
                 while (true)
                 {
                     string? commandLine = Console.ReadLine();
+                    
                     if (commandLine != null)
                     {
                         byte[] data = Encoding.ASCII.GetBytes(commandLine);
                         stream.Write(data, 0, data.Length);
+                        if (commandLine == "Exit()" || commandLine == "Exit")
+                        {
+                            Environment.Exit(0);
+                        }
                     } 
+                    
                 }
             }
             finally
